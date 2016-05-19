@@ -113,7 +113,9 @@ public class MarshalledEntryImpl<K,V> implements MarshalledEntry<K,V> {
       try {
          return (T) marshaller.objectFromByteBuffer(buf.getBuf(), buf.getOffset(), buf.getLength());
       } catch (Exception e) {
-         throw new PersistenceException(e);
+         System.out.println("ERROR unmarshalling object!!: " + e);
+         return (T)null;
+//         throw new PersistenceException(e);
       }
    }
 
